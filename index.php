@@ -27,12 +27,15 @@
 			<hr>
 
 			<?php include(ROOT_PATH . '/includes/all_functions.php');
-				// On appel la fonction : (sera exécuté dans index.php)
-				printPublishedPosts(getPublishedPosts());	
+				// On appel la fonction : 
+				$publishedPosts = getPublishedPosts();
+				if($publishedPosts != false) { 
+					printPublishedPosts($publishedPosts); // On affiche les posts "validé"
+				}
+				else {
+					echo "Erreur lors de la récupération des posts publiés.";
+				}
 			?>
-
-
-
 		</div>
 		<!-- // content -->
 

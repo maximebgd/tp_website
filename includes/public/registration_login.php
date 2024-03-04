@@ -19,28 +19,31 @@ if (isset($_POST['login_btn'])) {
     if (empty($errors)) {
         $password = md5($password); // cryptage du mot de passe
         $sql = "SELECT * FROM users WHERE username='$username' AND password='$password' LIMIT 1";
-        $result = mysqli_query($conn, $sql);
+        if($sql) {
+            $result = mysqli_query($conn, $sql);
 
-        if (mysqli_num_rows($result) > 0) {
-            // obtenir l'ID de l'utilisateur créé
-            $reg_user_id = mysqli_fetch_assoc($result)['id'];
+            if (mysqli_num_rows($result) > 0) {
+                // obtenir l'ID de l'utilisateur créé
+                $reg_user_id = mysqli_fetch_assoc($result)['id'];
 
-            // mettre l'utilisateur connecté dans le tableau de session
-            $_SESSION['user'] = getUserById($reg_user_id);
+                // mettre l'utilisateur connecté dans le tableau de session
+                $_SESSION['user'] = getUserById($reg_user_id);
 
-            // si l'utilisateur est admin, rediriger vers la zone d'administration
-            if (in_array($_SESSION['user']['role'], ["Admin"])) {
-                $_SESSION['message'] = "You are now logged in";
-                // rediriger vers la zone d'administration
-                header('location: ' . BASE_URL . '/admin/dashboard.php');
-                exit(0);
-            } else {
-                $_SESSION['message'] = "You are now logged in";
-                // rediriger vers la zone publique
-                header('location: index.php');
-                exit(0);
+                // si l'utilisateur est admin, rediriger vers la zone d'administration
+                if (in_array($_SESSION['user']['role'], ["Admin"])) {
+                    $_SESSION['message'] = "You are now logged in";
+                    // rediriger vers la zone d'administration
+                    header('location: ' . BASE_URL . '/admin/dashboard.php');
+                    exit(0);
+                } else {
+                    $_SESSION['message'] = "You are now logged in";
+                    // rediriger vers la zone publique
+                    header('location: index.php');
+                    exit(0);
+                }
             }
-        } else {
+        }
+        else {
             array_push($errors, 'Wrong credentials');
         }
     }
@@ -70,14 +73,19 @@ if(isset($_POST['register_btn'])) {
         // Check if username or email already exists in the database
         $sql = "SELECT * FROM users WHERE username='$username' AND email='$email' LIMIT 1";
         $result = mysqli_query($conn, $sql);
-        $user = mysqli_fetch_assoc($result);
-        if($user) {
-            if ($user['username'] === $username) {
-                array_push($errors, "Username already exists");
+        if($result) {
+            $user = mysqli_fetch_assoc($result);
+            if($user) {
+                if ($user['username'] === $username) {
+                    array_push($errors, "Username already exists");
+                }
+                if ($user['email'] === $email) {
+                    array_push($errors, "Email already exists");
+                }
             }
-            if ($user['email'] === $email) {
-                array_push($errors, "Email already exists");
-            }
+        }
+        else {
+            array_push($errors, 'Database error: failed to register');
         }
 
         // If there are no errors, register the user in the database
@@ -101,7 +109,8 @@ if(isset($_POST['register_btn'])) {
                     header('location: index.php');
                     exit(0);
                 }
-            } else {
+            } 
+            else {
                 array_push($errors, 'Database error: failed to register');
             }
         }
@@ -111,13 +120,17 @@ if(isset($_POST['register_btn'])) {
 // Obtenir les informations de l'utilisateur à partir de l'ID
 function getUserById($id) {
     global $conn;
-    // requête pour récupérer l'utilisateur et son rôle
-    $sql = "SELECT * FROM users WHERE id=$id LIMIT 1";
-    // exécution de la requête MySQL
-    $result = mysqli_query($conn, $sql);
-    // conversion du résultat en tableau associatif
-    $user = mysqli_fetch_assoc($result);
-    return $user;
+
+    $sql = "SELECT * FROM users WHERE id=$id LIMIT 1"; // requête pour récupérer l'utilisateur et son rôle
+    $result = mysqli_query($conn, $sql); // exécution de la requête MySQL
+    
+    if($result) {
+        $user = mysqli_fetch_assoc($result); // conversion du résultat en tableau associatif
+        return $user;
+    }
+    else {
+        return null;
+    }
 }
 
 

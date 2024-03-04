@@ -22,18 +22,12 @@
         <!-- content -->
         <div class="content">
             <?php
-            include(ROOT_PATH . '/includes/all_functions.php');
-            $slug = $_GET['post-slug'];
+                include(ROOT_PATH . '/includes/all_functions.php');
+                $slug = $_GET['post-slug'];
 
-            $single_post = getSinglePost($slug);
-
-            //printOnePosts($single_post);
-            ?>
-
-            <div class="full-post-div">
-                <h2> Title : <?= $single_post['title'] ?> </h2>
-                <h3> <?= $single_post['body'] ?> </h3>
-            </div>            
+                $single_post = getSinglePost($slug);
+                printSinglePost($single_post);
+            ?>          
         </div>
     </div>
     <!-- // content -->

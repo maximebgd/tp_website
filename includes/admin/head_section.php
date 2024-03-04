@@ -16,4 +16,5 @@
 
     <!-- Styling for public area -->
     <link rel="stylesheet" href="../static/css/admin_styling.css">
+    <link rel="stylesheet" href="../static/css/public_styling.css">
 
