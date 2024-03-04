@@ -13,6 +13,18 @@ function getNewUsers() {
     }
 }
 
+function getNbUsers() {
+    global $conn;
+
+    $sql = "SELECT COUNT(*) AS total FROM users"; // requête pour récupérer tous les utilisateurs
+    $result = mysqli_query($conn, $sql);
+
+    if($result) {
+        $row = mysqli_fetch_assoc($result);
+        return $row['total'];
+    }
+}
+
 function getPostTopic($post) {
     global $conn;
 
@@ -26,26 +38,44 @@ function getPostTopic($post) {
     } 
 }
 
-function add_delete_post() {
+function update() {
     global $conn;
 
     if(isset($_GET['publish'])) {
         $id = $_GET['publish'];
         $sql = "UPDATE posts SET published=1 WHERE id=$id";
         mysqli_query($conn, $sql);
-        //header('location: posts.php');
+        header('location: posts.php'); // on reste sur la MEME page !
     }
     else if (isset($_GET['delete-post'])) {
         $id = $_GET['delete-post'];
         $sql = "DELETE FROM posts WHERE id=$id";
         mysqli_query($conn, $sql);
-        //header('location: posts.php');
+        header('location: posts.php'); // on reste sur la MEME page !
     }
     else if (isset($_GET['delete'])) {
         $id = $_GET['delete'];
         $sql = "UPDATE posts SET published=0 WHERE id=$id";
         mysqli_query($conn, $sql);
-        //header('location: posts.php');
+        header('location: posts.php'); // on reste sur la MEME page !
+    }
+    else if (isset($_GET["delete-user"])) {
+        $id = $_GET["delete-user"];
+        $sql = "DELETE FROM users WHERE id=$id";
+        mysqli_query($conn, $sql);
+        header('location: users.php'); // on reste sur la MEME page !
+    }
+    else if (isset($_GET['admin-user'])) {
+        $id = $_GET['admin-user'];
+        $sql = "UPDATE users SET role='Admin' WHERE id=$id";
+        mysqli_query($conn, $sql);
+        header('location: users.php'); // on reste sur la MEME page !
+    }
+    else if (isset($_GET['author-user'])) {
+        $id = $_GET['author-user'];
+        $sql = "UPDATE users SET role='Author' WHERE id=$id";
+        mysqli_query($conn, $sql);
+        header('location: users.php'); // on reste sur la MEME page !
     }
 }
 
@@ -112,9 +142,10 @@ function printWaitingPosts($all_puslished_post) {
             <!-- Fin partie HTML -->
 
         <?php
+
+        update();
     }
 }
-add_delete_post();
 
 
 
@@ -179,6 +210,52 @@ function printPublishedPosts($all_puslished_post) {
             <!-- Fin partie HTML -->
 
         <?php
+
+        update();
     }
 }
-add_delete_post();
+
+
+function getAllUsers() {
+    global $conn;
+
+    $sql = 'SELECT * FROM users'; // requête pour récupérer tous les utilisateurs
+    $result = mysqli_query($conn, $sql);
+
+    if($result) {
+        $row = mysqli_fetch_all($result, MYSQLI_ASSOC);
+        return $row;
+    }
+}
+
+function printAllInfoUsers() {
+    $allUser = getAllUsers();
+
+    foreach($allUser as $user) {
+        ?>
+        <tr>
+            <td><?= $user['username'] ?></td>
+            <td><?= $user['email'] ?></td>
+            <td><?php // Admin = affichage rouge, Author = affichage bleu
+                $role = $user['role'] ;
+                if($role === "Admin") {
+                    ?> <p style="color: red;"> <?= $role ?> </p> <?php
+                }
+                else{
+                    ?> <p style="color: blue;"> <?= $role ?> </p> <?php
+                }
+            ?></td>
+            <td style="text-align: center;">
+                <a href="posts.php?delete-user=<?= $user['id'] ?>" onclick="return confirm('Voulez-vous vraiment supprimer cet utilisateur ?')"> ❌ </a>
+            </td>
+            <td style="text-align: center;">
+                ⚠️  >  <a href="posts.php?admin-user=<?= $user['id'] ?>" onclick="return confirm('Voulez-vous vraiment mettre admin cet utilisateur ?')"> ✅ </a>  <  ⚠️
+            </td>
+            <td style="text-align: center;">
+                <a href="posts.php?author-user=<?= $user['id'] ?>" onclick="return confirm('Voulez-vous vraiment mettre author cet utilisateur ?')"> ✅ </a>
+            </td>
+        <?php 
+    }
+
+    update();
+}

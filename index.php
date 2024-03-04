@@ -32,9 +32,6 @@
 				if($publishedPosts != false) { 
 					printPublishedPosts($publishedPosts); // On affiche les posts "validé"
 				}
-				else {
-					echo "Erreur lors de la récupération des posts publiés.";
-				}
 			?>
 		</div>
 		<!-- // content -->

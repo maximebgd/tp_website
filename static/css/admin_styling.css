@@ -41,13 +41,102 @@ table {
     margin: 20px auto;
 }
 
-th, td {
+/* * * * * * * * * *
+* ANCIEN MODELE
+* * * * * * * * * */
+/*th, td {
     padding: 8px;
     text-align: left;
     border: 1px solid #ddd;
 }
 th {
 	text-align: center;
+}*/
+
+/* * * * * * * * * *
+*
+* NOUVEAU MODELE DE TALBEAU
+*
+* * * * * * * * * */
+th {
+	padding-top: 12px;
+	padding-bottom: 12px;
+	text-align: left;
+	background-color: #3E606F;
+	color: white;
+	text-align: center;
+	border: 1px solid #ddd;
+	border-radius: 3px 3px 0px 0px;
+}
+td {
+	padding: 8px;
+	text-align: center;
+	border: 1px solid #ddd;
+
+}
+
+
+/* * * * * * * * * *
+*
+* MODELE POUR L'AFFICHAGE DES POSTS EN ATTENTES / VALIDES
+*
+* * * * * * * * * */
+.content .post {
+	width: 335px;
+	margin: 9px;
+	min-height: 320px;
+	float: left;
+	border-radius: 2px;
+	border: 1px solid #b3b3b3;
+	position: relative;
+}
+
+.content .post .category {
+	margin-top: 0px;
+	padding: 3px 8px;
+	color: #374447;
+	background: white;
+	display: inline-block;
+	border-radius: 2px;
+	border: 1px solid #374447;
+	box-shadow: 3px 2px 2px;
+	position: absolute;
+	left: 5px; top: 5px;
+	z-index: 3;
+}
+.content .post .category:hover {
+	box-shadow: 3px 2px 2px;
+	color: white;
+	background: #374447;
+	transition: .4s;
+	opacity: 1;
+}
+.content .post .post_image {
+	height: 260px;
+	width: 100%;
+	background-size: 100%;
+}
+.content .post .post_image {
+	width: 100%;
+	height: 260px;
+}
+.content .post .post_info {
+	height: 100%;
+	padding: 0px 5px;
+	font-weight: 200;
+    font-family: 'Noto Serif', serif;
+}
+.content .post .post_info {
+	color: #222;
+}
+
+.content .post .post_info span {
+	color: #A6A6A6;
+	font-style: italic;
+}
+.content .post .post_info span.read_more {
+	position: absolute;
+	right: 5px; bottom: 5px;
 }
 
 

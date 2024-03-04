@@ -59,9 +59,7 @@ function getPostTopic($post) {
     if ($result) {
         $topic = mysqli_fetch_assoc($result); // conversion du résultat en tableau associatif
         return $topic; // on retourne le tableau associatif
-    } else { // Si la requête a échoué
-        return false; // on retourne false
-    }
+    } 
 }
 
 function getSinglePost($post_slug) {
@@ -73,9 +71,7 @@ function getSinglePost($post_slug) {
     if ($result) {
         $post = mysqli_fetch_assoc($result);
         return $post;
-    } else {
-        return false;
-    }
+    } 
 }
 
 function printSinglePost($post) {
