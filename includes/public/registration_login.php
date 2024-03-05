@@ -19,9 +19,8 @@ if (isset($_POST['login_btn'])) {
     if (empty($errors)) {
         $password = md5($password); // cryptage du mot de passe
         $sql = "SELECT * FROM users WHERE username='$username' AND password='$password' LIMIT 1";
-        if($sql) {
-            $result = mysqli_query($conn, $sql);
-
+        $result = mysqli_query($conn, $sql);
+        if($result) {
             if (mysqli_num_rows($result) > 0) {
                 // obtenir l'ID de l'utilisateur créé
                 $reg_user_id = mysqli_fetch_assoc($result)['id'];

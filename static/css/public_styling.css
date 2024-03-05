@@ -58,6 +58,17 @@ form input:focus {
 	text-decoration: none;
 }
 
+/* * * * * * * * * *
+*
+* MODELE RAJOUTE
+*
+* * * * * * * * * */
+.post_btn a:hover {
+	background: #374447;
+}
+
+
+
 .container {
 	width: 80%;
 	margin: 0px auto;

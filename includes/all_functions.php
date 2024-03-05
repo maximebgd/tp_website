@@ -15,6 +15,13 @@ function getPublishedPosts() {
 
 function printPublishedPosts($all_published_posts) {
     if (isset($_SESSION['user']['username'])) {
+        ?>
+            <div class='post_btn'>
+                <a href="create_post.php" class="btn"> Poster un post </a>
+                <hr>
+            </div>
+        <?php
+
         // On affiche les post "valide" un par un
         foreach ($all_published_posts as $post) {
             $image = "../static/images/" . $post['image'];
@@ -109,3 +116,5 @@ function printSinglePost($post) {
     </div>
     <?php 
 }
+
+

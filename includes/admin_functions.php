@@ -13,6 +13,7 @@ function getNewUsers() {
     }
 }
 
+// Fonction pour calculer le nombre total d'utilisateurs inscrits au total
 function getNbUsers() {
     global $conn;
 
@@ -25,6 +26,7 @@ function getNbUsers() {
     }
 }
 
+// Fonction pour récupérer le topic d'un post donné
 function getPostTopic($post) {
     global $conn;
 
@@ -38,6 +40,7 @@ function getPostTopic($post) {
     } 
 }
 
+// Fonction pour update la liste des posts/utilisateurs (à appeler à chaque modificaion !)
 function update() {
     global $conn;
 
@@ -149,7 +152,7 @@ function printWaitingPosts($all_puslished_post) {
 
 
 
-
+// Fonction pour récupérer tous les pots qui sont publiés (published = 1)
 function getPublishedPost() {
     global $conn;
 
@@ -161,6 +164,8 @@ function getPublishedPost() {
         return $publishedPosts; // on retourne le tableau associatif
     } 
 }
+
+// Fonction pour récupérer le nombre de posts publiés (published = 1)
 function getNbPublishedPost() {
     global $conn;
 
@@ -171,11 +176,9 @@ function getNbPublishedPost() {
         $row = mysqli_fetch_assoc($result);
         return $row['total'];
     }
-    else {
-        return false;
-    }
 }
 
+// Fonction pour afficher tous les posts publiés et pouvoir les supprimer
 function printPublishedPosts($all_puslished_post) {
     // On affiche les post "en attente" un par un
     foreach ($all_puslished_post as $post) {
@@ -216,6 +219,7 @@ function printPublishedPosts($all_puslished_post) {
 }
 
 
+// Fonction pour obtenir la liste de tout nos utilisateurs
 function getAllUsers() {
     global $conn;
 
@@ -228,6 +232,7 @@ function getAllUsers() {
     }
 }
 
+// Fonction pour afficher la liste de tout nos utilisateurs et pouvoir les modifier
 function printAllInfoUsers() {
     $allUser = getAllUsers();
 

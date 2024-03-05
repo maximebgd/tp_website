@@ -26,6 +26,7 @@
 			<h2 class="content-title">Recent Articles</h2>
 			<hr>
 
+
 			<?php include(ROOT_PATH . '/includes/all_functions.php');
 				// On appel la fonction : 
 				$publishedPosts = getPublishedPosts();
