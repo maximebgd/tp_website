@@ -48,6 +48,16 @@ function printPublishedPosts($all_published_posts) {
 
             <?php
         }
+        ?>
+        
+        <div style="clear: both;">
+            <br>
+            <h2 class="content-title" style="display: block; text-align: left;">Post.s en attente de vérification</h2>
+            <hr>
+        </div>
+
+        <?php
+            printWaitingPosts(getWaitingPost());
     } else {
         ?>
             <h3 style="text-align: center; color: red"> Il faut vous connecter pour voir les posts ! </h3>
@@ -115,6 +125,64 @@ function printSinglePost($post) {
         </div>
     </div>
     <?php 
+}
+
+function getNbWaitingPost() {
+    global $conn;
+
+    $user_id = $_SESSION['user']['id']; // récupérer l'id de l'utilisateur connecté
+    $sql = "SELECT * FROM posts 
+        INNER JOIN users ON posts.user_id = users.id 
+        WHERE users.id = $user_id AND posts.published = 0"; // requête pour récupérer le nombre de posts en attente de l'utilisateur
+
+    $result = mysqli_query($conn, $sql);
+    if ($result) {
+        $num = mysqli_num_rows($result);
+        return $num;
+    }
+}
+
+function getWaitingPost() {
+    global $conn;
+
+    $user_id = $_SESSION['user']['id']; // récupérer l'id de l'utilisateur connecté
+    $sql = "SELECT * FROM posts WHERE published=0 AND user_id=$user_id"; // requête pour récupérer tous les articles "validés"
+    $result = mysqli_query($conn, $sql);
+
+    if ($result) { // Si la requête s'est bien déroulée
+        $publishedPosts = mysqli_fetch_all($result, MYSQLI_ASSOC);
+        return $publishedPosts; // on retourne le tableau associatif
+    } 
+}
+
+function printWaitingPosts($all_puslished_post) {
+    // On affiche les post "en attente" un par un
+    foreach ($all_puslished_post as $post) {
+        $image = "../static/images/" . $post['image'];
+        ?>
+
+            <!-- Partie HTML -->
+            <div class='post' style="margin-left: 0px;">
+                <img src=<?= $image ?> class='post_image' alt="">
+                <h3 class="category">
+                    <?php // On veut afficher le topic du post
+                        $topic = getPostTopic($post); // on récupère le topic du post
+                        echo $topic['name']; // on affiche le topic
+                    ?>
+                </h3>
+                <div class='post_info'>
+                    <h3> <?= $post['title'] ?> </h3>
+                    <div class='info'>
+                        <span> <?= date("F j, Y ", strtotime($post["created_at"])) ?> </span>
+                        <span class="read_more"> <a href="single_post.php?post-slug=<?php echo $post['slug']; ?>"> Read more... </a></span>
+                    </div>
+                </div>
+            </div>
+            <!-- Fin partie HTML -->
+
+
+        <?php
+    }
 }
 
 
