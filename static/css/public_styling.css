@@ -67,6 +67,19 @@ form input:focus {
 	background: #374447;
 }
 
+form textarea {
+	width: 100%;
+	display: block;
+	padding: 13px 13px;
+	font-size: 1em;
+	margin: 5px auto 10px;
+	border-radius: 3px;
+	box-sizing : border-box;
+	background: transparent;
+	border: 1px solid #3E606F;
+	font-family: 'Arial';
+}
+
 
 
 .container {

@@ -186,3 +186,19 @@ function printWaitingPosts($all_puslished_post) {
 }
 
 
+function loadContactPage() {
+    // Récupérer l'URL actuelle avec le fragment
+    $current_url = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+    echo "". $current_url ."";
+
+    // Vérifier si la clé 'QUERY_STRING' existe dans le tableau $_SERVER
+    if (array_key_exists('QUERY_STRING', $_SERVER)) {
+        // Si la clé 'QUERY_STRING' existe, afficher la valeur associée
+        echo "QUERY_STRING: " . $_SERVER['QUERY_STRING'] . "<br>";
+    } else {
+        // Si la clé 'QUERY_STRING' n'existe pas, afficher un message
+        echo "QUERY_STRING does not exist";
+    }
+}
+
+

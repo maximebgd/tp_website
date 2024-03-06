@@ -33,6 +33,8 @@
 				if($publishedPosts != false) { 
 					printPublishedPosts($publishedPosts); // On affiche les posts "validé"
 				}
+
+				loadContactPage();
 			?>
 		</div>
 		<!-- // content -->
