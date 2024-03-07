@@ -1,4 +1,3 @@
-
 <?php include('../config.php'); ?>
 <?php include(ROOT_PATH . '/includes/admin_functions.php'); ?>
 <?php include(ROOT_PATH . '/includes/admin/head_section.php'); ?>
@@ -20,7 +19,7 @@
 		<?php endif ?>
 	</div>
 	<div class="container dashboard">
-		<h1> Ajout de post <br>
+		<h1> <p style="text-decoration: underline;"> Ajout de post </p>
             <span style="font-size: 80%;">
                 <span style="color:red">
                     <?php
@@ -44,13 +43,15 @@
         </div>
 
 		<br><br><br>
+
 		<div class="buttons">
 			<a href="dashboard.php">Retour au dashboard</a>
 		</div>
+        
 	</div>
 
     <div class="container dashboard">
-		<h1> Suppression de post en ligne<br>
+		<h1> <p style="text-decoration: underline;"> Suppression de post en ligne </p>
             <span style="font-size: 80%;">
                 <span style="color:red">
                     <?php
@@ -74,9 +75,11 @@
         </div>
 
 		<br><br><br>
+
 		<div class="buttons">
 			<a href="dashboard.php">Retour au dashboard</a>
 		</div>
+
 	</div>
 
 </body>

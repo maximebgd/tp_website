@@ -19,7 +19,7 @@
 		<?php endif ?>
 	</div>
 	<div class="container dashboard">
-		<h1> Liste des utilisateurs <br>
+		<h1> <p style="text-decoration: underline;"> Liste des utilisateurs </p>
             <span style="font-size: 80%;">
                 <span style="color:red">
                     <?php
@@ -50,9 +50,11 @@
         </table>
 
 		<br><br><br>
+
 		<div class="buttons">
 			<a href="dashboard.php">Retour au dashboard</a>
 		</div>
+        
 	</div>
 </body>
 

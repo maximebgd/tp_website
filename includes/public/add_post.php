@@ -14,7 +14,7 @@ if(isset($_POST["post_btn"])) {
     // Vérifier si un fichier a été téléchargé avec succès
     if(isset($_FILES["image"]["name"])) {
         $image = $_FILES["image"]["name"]; // récupère le nom de l'image
-        ////print_r("Nom de l'image : " . $image); // DEBUG
+        //print_r("Nom de l'image : " . $image); // DEBUG
     }
     else if ($_FILES["image"]["error"] > 0) {
         array_push($errors, "Erreur lors du téléchargement du fichier : " . $_FILES["image"]["error"]);
@@ -23,18 +23,12 @@ if(isset($_POST["post_btn"])) {
 
     $topic = esc($_POST["topic"]);
     
-
-    if(empty($title)) {
-        array_push($errors, "Title required");
-    }
-    if(empty($topic)) {
-        array_push($errors, "Topic required");
-    }
-    if(empty($body)) {
-        array_push($errors, "Body required");
-    }
+    // On vérifie que les champs ne sont pas vides
+    if(empty($title)) array_push($errors, "Title required");
+    if(empty($topic)) array_push($errors, "Topic required");
+    if(empty($body)) array_push($errors, "Body required");
     
-
+    // Si on a aucune erreur
     if (empty($errors)) {
         // Insertion dans la table posts
         $sql_insert_post = "INSERT INTO posts (user_id, title, slug, views, image, body, published, created_at, updated_at) VALUES ('{$_SESSION['user']['id']}', '$title', '$slug', 0, '$image', '$body', 0, NOW(), NOW())";

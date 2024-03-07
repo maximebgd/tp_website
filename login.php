@@ -1,9 +1,5 @@
 <?php include('config.php'); ?>
-
 <?php include('includes/public/registration_login.php'); ?>
-
-
-
 <?php include('includes/public/head_section.php'); ?>
 
 <title>MyWebSite | Sign in </title>

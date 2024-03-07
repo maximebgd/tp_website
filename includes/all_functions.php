@@ -1,4 +1,16 @@
 <?php
+
+// =======================================================
+//    A    L      L           PPPP    OOO    SSS   TTTTT
+//   A A   L      L           P   P  O   O  S        T
+//  A   A  L      L           P   P  O   O   SSS     T
+//  AAAAA  L      L           PPPP   O   O      S    T
+//  A   A  L      L           P      O   O      S    T
+//  A   A  LLLLL  LLLLL       P       OOO   SSSS     T
+// =======================================================
+// * * * ALL POST
+
+// Fonction pour récupérer tous les posts "validés" (pushlished=1)
 function getPublishedPosts() {
     global $conn;
 
@@ -9,10 +21,12 @@ function getPublishedPosts() {
         $publishedPosts = mysqli_fetch_all($result, MYSQLI_ASSOC);
         return $publishedPosts; // on retourne le tableau associatif
     } else { // Si la requête a échoué
-        return false; // on retourne false
+        return null; // on retourne false
     }
 }
 
+
+// Fonction pour afficher tous les posts passé en paramètre + les posts en attente de vérification (il faut être log pour voir les posts)
 function printPublishedPosts($all_published_posts) {
     if (isset($_SESSION['user']['username'])) {
         ?>
@@ -66,6 +80,7 @@ function printPublishedPosts($all_published_posts) {
 }
 
 
+// Fonction pour récupérer le topic d'un post
 function getPostTopic($post) {
     global $conn;
 
@@ -79,6 +94,22 @@ function getPostTopic($post) {
     } 
 }
 
+
+
+
+
+// ==========================================================================
+//   SSS   III  N   N   GGG   L      EEEEE       PPPP    OOO    SSS   TTTTT
+//  S       I   NN  N  G   G  L      E           P   P  O   O  S        T
+//   SSS    I   N N N  G      L      EEE         P   P  O   O   SSS     T
+//      S   I   N  NN  G  GG  L      E           PPPP   O   O      S    T
+//      S   I   N   N  G   G  L      E           P      O   O      S    T
+//  SSSS   III  N   N   GGGG  LLLLL  EEEEE       P       OOO   SSSS     T
+// ==========================================================================
+// * * * SINGLE POST
+
+
+// Fonction pour récupérer un seul post par son slug
 function getSinglePost($post_slug) {
     global $conn;
 
@@ -91,9 +122,8 @@ function getSinglePost($post_slug) {
     } 
 }
 
-function printSinglePost($post) {
-    global $conn;
 
+function printSinglePost($post) {
     ?>
     <div class="content">
         <div class="post-wrapper">
@@ -127,6 +157,21 @@ function printSinglePost($post) {
     <?php 
 }
 
+
+
+
+
+// ===============================================================================
+//  W   W    A    III  TTTTT  III  N   N   GGG        PPPP    OOO    SSS   TTTTT
+//  W   W   A A    I     T     I   NN  N  G   G       P   P  O   O  S        T
+//  W   W  A   A   I     T     I   N N N  G           P   P  O   O   SSS     T
+//  W W W  AAAAA   I     T     I   N  NN  G  GG       PPPP   O   O      S    T
+//  W W W  A   A   I     T     I   N   N  G   G       P      O   O      S    T
+//   W W   A   A  III    T    III  N   N   GGGG       P       OOO   SSSS     T
+// ===============================================================================
+// * * * WAITING POST
+
+
 function getNbWaitingPost() {
     global $conn;
 
@@ -142,6 +187,7 @@ function getNbWaitingPost() {
     }
 }
 
+
 function getWaitingPost() {
     global $conn;
 
@@ -154,6 +200,7 @@ function getWaitingPost() {
         return $publishedPosts; // on retourne le tableau associatif
     } 
 }
+
 
 function printWaitingPosts($all_puslished_post) {
     // On affiche les post "en attente" un par un
@@ -184,21 +231,3 @@ function printWaitingPosts($all_puslished_post) {
         <?php
     }
 }
-
-
-function loadContactPage() {
-    // Récupérer l'URL actuelle avec le fragment
-    $current_url = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-    echo "". $current_url ."";
-
-    // Vérifier si la clé 'QUERY_STRING' existe dans le tableau $_SERVER
-    if (array_key_exists('QUERY_STRING', $_SERVER)) {
-        // Si la clé 'QUERY_STRING' existe, afficher la valeur associée
-        echo "QUERY_STRING: " . $_SERVER['QUERY_STRING'] . "<br>";
-    } else {
-        // Si la clé 'QUERY_STRING' n'existe pas, afficher un message
-        echo "QUERY_STRING does not exist";
-    }
-}
-
-

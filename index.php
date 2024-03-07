@@ -30,11 +30,9 @@
 			<?php include(ROOT_PATH . '/includes/all_functions.php');
 				// On appel la fonction : 
 				$publishedPosts = getPublishedPosts();
-				if($publishedPosts != false) { 
+				if($publishedPosts != null) { 
 					printPublishedPosts($publishedPosts); // On affiche les posts "validé"
 				}
-
-				loadContactPage();
 			?>
 		</div>
 		<!-- // content -->
