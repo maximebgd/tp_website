@@ -1,7 +1,8 @@
+
 <?php include('config.php'); ?>
 <?php include('includes/public/head_section.php'); ?>
 <?php include('./includes/public/add_post.php'); ?>
-<title>MyWebSite | Add post </title>
+<title>MyWebSite | Contact </title>
 
 </head>
 
@@ -23,20 +24,19 @@
 
 		<!-- content -->
 		<div class="content">
-			<h1 class="content-title" style="text-align: center;">Nouveau post :</h1>
+			<h1 class="content-title" style="text-align: center;">Contact :</h1>
 			<hr>
 
 			<form action="" method="post" enctype="multipart/form-data">
 				<?php include(ROOT_PATH . '/includes/public/errors.php') ?>
                 
-                <input type="text" name="title" id="title" placeholder="Titre du post" required>
-                
-				<input type="file" name="image" id="image" accept="image/*" required>
+                <input type="text" name="username" id="username" placeholder="Votre username" required>
+        
 
-				<input type="text" name="topic" id="topic" placeholder="Sujet du post" required>
-                <input type="text" name="body" id="body" placeholder="Contenu du post" required>
+				<input type="text" name="topic" id="topic" placeholder="Sujet du contact" required>
+                <input type="text" name="body" id="body" placeholder="Votre message" required>
 
-                <button type="submit" class="btn" name="post_btn">Poster ✅</button>
+                <button type="submit" class="btn" name="contact_btn">Envoyer ✅</button>
             </form>
 		</div>
 		<!-- // content -->

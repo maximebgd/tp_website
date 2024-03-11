@@ -382,6 +382,8 @@ form textarea {
 	padding: 8px 10px;
 	border-bottom: 1px solid #e4e1e1;
 	color: #444;
+	/*** On ajoute : ***/
+	color: #444; font-family: 'Averia Serif Libre', cursive; font-size: 130%;
 }
 
 .post-sidebar .card .card-content a:hover {
@@ -403,3 +405,32 @@ form textarea {
   margin: 20px auto 0px;
   padding: 20px 0px;
 }
+
+
+.team-member {
+	margin: 10px;
+	padding: 10px;
+	border: 1px solid #e4e1e1;
+	border-radius: 5px;
+	background-color: #F9F9F9;
+	text-align: center;
+}
+
+.team-member img {
+	width: 100px;
+	height: 100px;
+	border-radius: 50%;
+	object-fit: cover;
+	margin-bottom: 10px;
+}
+
+.team-member h3 {
+	font-size: 1.2em;
+	margin-bottom: 5px;
+}
+
+.team-member p {
+	font-size: 0.9em;
+	color: #777;
+}
+

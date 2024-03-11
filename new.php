@@ -2,7 +2,7 @@
 <?php include('includes/public/head_section.php'); ?>
 <?php include('./includes/public/registration_login.php'); ?>
 <?php include(ROOT_PATH . '/includes/all_functions.php'); ?>
-<title>MyWebSite | Home </title>
+<title>MyWebSite | New </title>
 
 </head>
 
@@ -29,11 +29,8 @@
 
 
 			<?php 
-				// On appel les fonctions qui sont dans all_function.php
-				$publishedPosts = getPublishedPosts();
-				if($publishedPosts != null) { 
-					printPublishedPosts($publishedPosts); // On affiche les posts "validé"
-				}
+				$recentPost = getRecentPost();
+                printPosts($recentPost);
 			?>
 		</div>
 		<!-- // content -->

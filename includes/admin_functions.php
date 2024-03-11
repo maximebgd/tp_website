@@ -254,7 +254,7 @@ function printAllInfoUsers() {
                 <a href="posts.php?delete-user=<?= $user['id'] ?>" onclick="return confirm('Voulez-vous vraiment supprimer cet utilisateur ?')"> ❌ </a>
             </td>
             <td style="text-align: center;">
-                ⚠️  >  <a href="posts.php?admin-user=<?= $user['id'] ?>" onclick="return confirm('Voulez-vous vraiment mettre admin cet utilisateur ?')"> ✅ </a>  <  ⚠️
+                <a href="posts.php?admin-user=<?= $user['id'] ?>" onclick="return confirm('Voulez-vous vraiment mettre admin cet utilisateur ?')"> ✅ </a>
             </td>
             <td style="text-align: center;">
                 <a href="posts.php?author-user=<?= $user['id'] ?>" onclick="return confirm('Voulez-vous vraiment mettre author cet utilisateur ?')"> ✅ </a>

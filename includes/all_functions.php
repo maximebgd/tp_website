@@ -110,51 +110,28 @@ function getPostTopic($post) {
 
 
 // Fonction pour récupérer un seul post par son slug
-function getSinglePost($post_slug) {
+function getPost($slug) {
     global $conn;
 
-    $sql = "SELECT * FROM posts WHERE slug='$post_slug' LIMIT 1"; // avec published=1 forcément car on a cliqué dessus
+    $sql = "SELECT * FROM posts WHERE slug='$slug' LIMIT 1"; // avec published=1 forcément car on a cliqué dessus
     $result = mysqli_query($conn, $sql);
 
     if ($result) {
-        $post = mysqli_fetch_assoc($result);
+        $post = mysqli_fetch_assoc($result); // on récupère les lignes 
         return $post;
     } 
 }
 
+function getAllTopics() {
+    global $conn;
 
-function printSinglePost($post) {
-    ?>
-    <div class="content">
-        <div class="post-wrapper">
-            <div class="full-post-div">
-                 <!-- On affiche le titre du post -->
-                <h2 class="post-title">
-                    <span style="text-decoration: underline"> Titre :</span>
-                    <?= $post['title'] ?> 
-                </h2>
-                
-                <!-- On affiche le contenu du post -->
-                <h3 class="post-body-div"> <?= $post['body'] ?> </h3> 
-            </div>
-        </div>  
-        
-        <!-- On affiche le topic du post à droite -->
-        <div class="post-sidebar">
-            <div class="card">
-                <div class="card-header">
-                    <h2> Topics </h2>
-                </div>
-                <h2>
-                    <?php
-                        $topic = getPostTopic($post);
-                        echo $topic['name'];
-                    ?>
-                </h2>
-            </div>
-        </div>
-    </div>
-    <?php 
+    $sql = "SELECT * FROM topics"; // requête pour récupérer tous les topics
+    $result = mysqli_query($conn, $sql);
+
+    if($result) {
+        $topics = mysqli_fetch_all($result, MYSQLI_ASSOC);
+        return $topics;
+    }
 }
 
 
@@ -228,6 +205,54 @@ function printWaitingPosts($all_puslished_post) {
             <!-- Fin partie HTML -->
 
 
+        <?php
+    }
+}
+
+
+function getRecentPost() {
+    global $conn;
+
+    $sql = "SELECT * FROM posts WHERE published=1 ORDER BY created_at DESC LIMIT 6"; // query to get the last 6 posts
+    $result = mysqli_query($conn, $sql);
+
+    if ($result) {
+        $posts = mysqli_fetch_all($result, MYSQLI_ASSOC);
+        return $posts;
+    }
+}
+
+function printPosts($all_posts) {
+    if (isset($_SESSION['user']['username'])) {
+        // On affiche les post "valide" un par un
+        foreach ($all_posts as $post) {
+            $image = "../static/images/" . $post['image'];
+            ?>
+
+                <!-- Partie HTML -->
+                <div class='post' style="margin-left: 0px;">
+                    <img src=<?= $image ?> class='post_image' alt="">
+                    <h3 class="category">
+                        <?php // On veut afficher le topic du post
+                            $topic = getPostTopic($post); // on récupère le topic du post
+                            echo $topic['name']; // on affiche le topic
+                        ?>
+                    </h3>
+                    <div class='post_info'>
+                        <h3> <?= $post['title'] ?> </h3>
+                        <div class='info'>
+                            <span> <?= date("F j, Y ", strtotime($post["created_at"])) ?> </span>
+                            <span class="read_more"> <a href="single_post.php?post-slug=<?php echo $post['slug']; ?>"> Read more... </a></span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Fin partie HTML -->
+
+            <?php
+        }
+    } else {
+        ?>
+            <h3 style="text-align: center; color: red"> Il faut vous connecter pour voir les posts ! </h3>
         <?php
     }
 }

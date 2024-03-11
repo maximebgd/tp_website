@@ -2,7 +2,7 @@
 <?php include('includes/public/head_section.php'); ?>
 <?php include('./includes/public/registration_login.php'); ?>
 <?php include(ROOT_PATH . '/includes/all_functions.php'); ?>
-<title>MyWebSite | Home </title>
+<title>MyWebSite | About </title>
 
 </head>
 
@@ -22,19 +22,20 @@
 		<?php include(ROOT_PATH . '/includes/public/messages.php'); ?>
 		<!-- // Messages -->
 
+
 		<!-- content -->
 		<div class="content">
-			<h2 class="content-title">Recent Articles</h2>
+			<h2 class="content-title">TP réalisé par : </h2>
 			<hr>
+            <p class="team-member"> 
+            <img src="./static/images/maxime.png" alt="">
+                <strong>Maxime BEGOUD - TP4</strong> : Développement du code & architecture
+            </p>
+            <p class="team-member"> 
+                <img src="./static/images/amine.png" alt="">
+                <strong>Amine BOUFTILA - TP4 </strong> : 
+            </p>
 
-
-			<?php 
-				// On appel les fonctions qui sont dans all_function.php
-				$publishedPosts = getPublishedPosts();
-				if($publishedPosts != null) { 
-					printPublishedPosts($publishedPosts); // On affiche les posts "validé"
-				}
-			?>
 		</div>
 		<!-- // content -->
 
