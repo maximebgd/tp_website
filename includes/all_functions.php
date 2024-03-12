@@ -256,3 +256,49 @@ function printPosts($all_posts) {
         <?php
     }
 }
+
+
+
+
+
+// ===============================================================================================
+//  FFFFF  III  L      TTTTT  EEEEE  RRRR   EEEEE  DDD         PPPP    OOO    SSS   TTTTT   SSS
+//  F       I   L        T    E      R   R  E      D  D        P   P  O   O  S        T    S
+//  FFF     I   L        T    EEE    R   R  EEE    D   D       P   P  O   O   SSS     T     SSS
+//  F       I   L        T    E      RRRR   E      D   D       PPPP   O   O      S    T        S
+//  F       I   L        T    E      R  R   E      D  D        P      O   O      S    T        S
+//  F      III  LLLLL    T    EEEEE  R   R  EEEEE  DDD         P       OOO   SSSS     T    SSSS
+// ===============================================================================================
+// * * * FILTERED POSTS
+
+function getTopic($topic) {
+    global $conn;
+
+    $sql = "SELECT id FROM topics WHERE name='$topic'"; 
+    $result_id_topic = mysqli_query($conn, $sql);
+
+    if ($result_id_topic) {
+        $topic = mysqli_fetch_assoc($result_id_topic); // on récupère une lignes 
+        return $topic;
+    } 
+}
+
+function getPublishedPostsByTopic($topic_id) {
+    global $conn;
+    $final_posts = array();
+
+    $sql = "SELECT * FROM posts WHERE id IN (SELECT post_id FROM post_topic WHERE topic_id=$topic_id) AND published=1";
+    $result = mysqli_query($conn, $sql);;
+    // fetch all posts as an associative array called $posts
+    $posts = mysqli_fetch_all($result, MYSQLI_ASSOC);
+
+    foreach ($posts as $post) {
+        $post['topic'] = getPostTopic($post);
+        array_push($final_posts, $post);
+    }
+    
+    return $final_posts;
+}
+
+
+

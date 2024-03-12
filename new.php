@@ -27,11 +27,11 @@
 			<h2 class="content-title">Recent Articles</h2>
 			<hr>
 
-
 			<?php 
 				$recentPost = getRecentPost();
                 printPosts($recentPost);
 			?>
+			
 		</div>
 		<!-- // content -->
 
