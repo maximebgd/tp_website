@@ -44,21 +44,21 @@ table {
 /* * * * * * * * * *
 * ANCIEN MODELE
 * * * * * * * * * */
-/*th, td {
+th, td {
     padding: 8px;
     text-align: left;
     border: 1px solid #ddd;
 }
 th {
 	text-align: center;
-}*/
+}
 
 /* * * * * * * * * *
 *
 * NOUVEAU MODELE DE TALBEAU
 *
 * * * * * * * * * */
-th {
+/*th {
 	padding-top: 12px;
 	padding-bottom: 12px;
 	text-align: left;
@@ -73,7 +73,7 @@ td {
 	text-align: center;
 	border: 1px solid #ddd;
 
-}
+}*/
 
 
 /* * * * * * * * * *
@@ -340,6 +340,18 @@ td {
 	border: 1px solid #3c763d;
 	border-radius: 5px; 
 	text-align: center;
+}
+
+.message_error {
+    width: 100%;
+    margin: 0px auto;
+    padding: 10px 0px;
+    color: #a94442;
+    background: #f2dede;
+    border: 1px solid #a94442;
+    border-radius: 5px;
+    text-align: center;
+	margin-bottom: 20px;
 }
 
 .error {
