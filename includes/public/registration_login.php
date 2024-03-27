@@ -116,7 +116,7 @@ if(isset($_POST['register_btn'])) {
 }
 
 // Obtenir les informations de l'utilisateur à partir de l'ID
-function getUserById($id) {
+function getUserById($id) { // Fonction définit aussi dans all_function.php mais c'est pour mieux structurer / séparer le code
     global $conn;
 
     $sql = "SELECT * FROM users WHERE id=$id LIMIT 1"; // requête pour récupérer l'utilisateur par son ID

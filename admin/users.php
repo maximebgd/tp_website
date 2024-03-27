@@ -22,8 +22,17 @@ $admins = getAdminUsers(); // by admin roles i mean (Admin or Author), table use
 
 		<!-- Middle form - to create and edit  -->
 		<div class="action">
-			<h1 class="page-title">Create/Edit Admin User</h1>
-
+			<?php 
+				if(isset($_GET['edit-admin'])) {
+					$user = getUserById($_GET['edit-admin']);
+					$userinfo = 'ID : ' . $user['id'] . ' - Username : ' . $user['username'];
+					?> 	<h1 class="page-title" style="text-decoration: underline; margin-bottom: 7px;">Edit :</h1> 		
+						<h2> <?= $userinfo ?> </h2>			
+					<?php
+				}
+				else { ?>
+					<h1 class="page-title">Create/Edit Admin User</h1>
+			<?php } ?>
 			<form method="post" action="<?php echo BASE_URL . 'admin/users.php'; ?>">
 
 				<!-- validation errors for the form -->
@@ -90,7 +99,7 @@ $admins = getAdminUsers(); // by admin roles i mean (Admin or Author), table use
 									</a>
 								</td>
 								<td>
-									<a class="fa fa-trash btn delete" href="users.php?delete-admin=<?php echo $admin['id'] ?>">
+									<a class="fa fa-trash btn delete" href="users.php?delete-admin=<?php echo $admin['id'] ?>" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet utilisateur ?')">
 									</a>
 								</td>
 							</tr>
@@ -101,6 +110,9 @@ $admins = getAdminUsers(); // by admin roles i mean (Admin or Author), table use
 		</div>
 		<!-- // Display records from DB -->
 
+        <div class="buttons">
+            <a href="dashboard.php">Retour au dashboard</a>
+        </div>
 	</div>
 
 </body>

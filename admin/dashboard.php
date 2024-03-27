@@ -33,14 +33,15 @@
 			<a href="posts.php">
 				<span>
 					<?php 
-						$nb_post = getNbPublishedPost();
+						include(ROOT_PATH . '/admin/post_functions.php');
+						$nb_post = getNbPublishedPost_admin();
 						echo $nb_post;
 					?>
 				Published posts</span>
 				<br>
 				<span>
 					<?php 
-						$nb_waiting_post = getNbWaitingPost();
+						$nb_waiting_post = getNbWaitingPost_admin();
 						echo $nb_waiting_post;
 					?>
 				Waiting posts</span>

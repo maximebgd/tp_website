@@ -40,8 +40,6 @@ function printPublishedPosts($all_published_posts) {
         foreach ($all_published_posts as $post) {
             $image = "../static/images/" . $post['image'];
             ?>
-
-                <!-- Partie HTML -->
                 <div class='post' style="margin-left: 0px;">
                     <img src=<?= $image ?> class='post_image' alt="">
                     <h3 class="category">
@@ -58,8 +56,6 @@ function printPublishedPosts($all_published_posts) {
                         </div>
                     </div>
                 </div>
-                <!-- Fin partie HTML -->
-
             <?php
         }
         ?>
@@ -81,7 +77,7 @@ function printPublishedPosts($all_published_posts) {
 
 
 // Fonction pour récupérer le topic d'un post
-function getPostTopic($post) {
+function getPostTopic($post) { // Fonction définit aussi dans post_function.php mais c'est pour mieux structurer / séparer le code
     global $conn;
 
     $id = $post['id']; // pour récupérer la valeur de l'id
@@ -110,7 +106,7 @@ function getPostTopic($post) {
 
 
 // Fonction pour récupérer un seul post par son slug
-function getPost($slug) {
+function getOnePostBySlug($slug) {
     global $conn;
 
     $sql = "SELECT * FROM posts WHERE slug='$slug' LIMIT 1"; // avec published=1 forcément car on a cliqué dessus
@@ -299,7 +295,6 @@ function getPublishedPostsByTopic($topic_id) {
     
     return $final_posts;
 }
-
 
 
 

@@ -2,7 +2,7 @@
 <?php include('includes/public/head_section.php'); ?>
 <?php 
     include('includes/all_functions.php'); 
-    $post = getPost($_GET['post-slug']);
+    $post = getOnePostBySlug($_GET['post-slug']);
 ?>
     
 <title> <?php echo $post['title'] ?> | MyWebSite</title>
@@ -21,11 +21,11 @@
                     <!-- On affiche le titre du post -->
                     <h2 class="post-title">
                         <span style="text-decoration: underline"> Titre :</span>
-                        <?= getPost($_GET['post-slug'])['title']; ?>     
+                        <?= getOnePostBySlug($_GET['post-slug'])['title']; ?>     
                     <h2>
                     <!-- On affiche le contenu du post modif : div -> h3 -->
                     <h3 class="post-body-div">
-                        <?= getPost($_GET['post-slug'])['body']; ?>
+                        <?= getOnePostBySlug($_GET['post-slug'])['body']; ?>
                     </h3>
                 </div>
                 <!-- // full post div -->
