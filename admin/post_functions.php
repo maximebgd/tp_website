@@ -27,8 +27,7 @@
 }*/
 
 // Fonction pour récupérer le nom d'un utilisateur via son ID
-function getAuthorById($user_id)
-{
+function getAuthorById($user_id) {
     global $conn;
 
     $sql = "SELECT username FROM users WHERE id=$user_id";
@@ -42,8 +41,7 @@ function getAuthorById($user_id)
 
 
 // Fonction pour récupérer le topic d'un post donné
-function getPostTopic($post)
-{ // Fonction définit aussi dans all_function.php mais c'est pour mieux structurer / séparer le code
+function getPostTopic($post) { // Fonction définit aussi dans all_function.php mais c'est pour mieux structurer / séparer le code
     global $conn;
 
     $id = $post['id']; // pour récupérer la valeur de l'id
@@ -65,12 +63,14 @@ function update_post()
         $id = $_GET['published'];
         $sql = "UPDATE posts SET published=1 WHERE id=$id";
         mysqli_query($conn, $sql);
+        $_SESSION['message'] = "Post published successfully";
         header('location: posts.php'); // on reste sur la MEME page !
         exit(0);
     } else if (isset($_GET['delete'])) {
         $id = $_GET['delete'];
         $sql = "DELETE FROM posts WHERE id=$id";
         mysqli_query($conn, $sql);
+        $_SESSION['message'] = "Post deleted successfully";
         header('location: posts.php'); // on reste sur la MEME page !
         exit(0);
     }

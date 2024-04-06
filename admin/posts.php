@@ -4,7 +4,6 @@
 
 <?php
 $waiting_post = getWaitingPost_admin();
-//var_dump($waiting_post);
 ?>
 
 <title>Admin | Add-Remove Posts</title>

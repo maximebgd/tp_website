@@ -11,7 +11,8 @@
 // * * * ALL POST
 
 // Fonction pour récupérer tous les posts "validés" (pushlished=1)
-function getPublishedPosts() {
+function getPublishedPosts()
+{
     global $conn;
 
     $sql = "SELECT * FROM posts WHERE published=1"; // requête pour récupérer tous les articles "validés"
@@ -27,57 +28,94 @@ function getPublishedPosts() {
 
 
 // Fonction pour afficher tous les posts passé en paramètre + les posts en attente de vérification (il faut être log pour voir les posts)
-function printPublishedPosts($all_published_posts) {
+function printPublishedPosts($all_published_posts)
+{
     if (isset($_SESSION['user']['username'])) {
-        ?>
-            <div class='post_btn'>
-                <a href="create_post.php" class="btn"> Poster un post </a>
-                <hr>
-            </div>
+?>
+        <div class='post_btn'>
+            <a href="create_post.php" class="btn"> Poster un post </a>
+            <hr>
+        </div>
         <?php
 
         // On affiche les post "valide" un par un
         foreach ($all_published_posts as $post) {
             $image = "../static/images/" . $post['image'];
-            ?>
-                <div class='post' style="margin-left: 0px;">
-                    <img src=<?= $image ?> class='post_image' alt="">
-                    <h3 class="category">
-                        <?php // On veut afficher le topic du post
-                            $topic = getPostTopic($post); // on récupère le topic du post
-                            echo $topic['name']; // on affiche le topic
-                        ?>
-                    </h3>
-                    <div class='post_info'>
-                        <h3> <?= $post['title'] ?> </h3>
-                        <div class='info'>
-                            <span> <?= date("F j, Y ", strtotime($post["created_at"])) ?> </span>
-                            <span class="read_more"> <a href="single_post.php?post-slug=<?php echo $post['slug']; ?>"> Read more... </a></span>
-                        </div>
+        ?>
+            <div class='post' style="margin-left: 0px;">
+                <img src=<?= $image ?> class='post_image' alt="">
+                <h3 class="category">
+                    <?php // On veut afficher le topic du post
+                    $topic = getPostTopic($post); // on récupère le topic du post
+                    echo $topic['name']; // on affiche le topic
+                    ?>
+                </h3>
+                <div class='post_info'>
+                    <h3> <?= $post['title'] ?> </h3>
+                    <div class='info'>
+                        <span> <?= date("F j, Y ", strtotime($post["created_at"])) ?> </span>
+                        <span class="read_more"> <a href="single_post.php?post-slug=<?php echo $post['slug']; ?>"> Read more... </a></span>
                     </div>
                 </div>
-            <?php
+            </div>
+        <?php
         }
         ?>
-        
+
         <div style="clear: both;">
             <br>
             <h2 class="content-title" style="display: block; text-align: left;">Post.s en attente de vérification</h2>
             <hr>
         </div>
 
-        <?php
-            printWaitingPosts(getWaitingPost());
+    <?php
+        printWaitingPosts(getWaitingPost());
     } else {
-        ?>
-            <h3 style="text-align: center; color: red"> Il faut vous connecter pour voir les posts ! </h3>
-        <?php
+    ?>
+        <h3 style="text-align: center; color: red"> Il faut vous connecter pour voir les posts ! </h3>
+    <?php
+    }
+}
+
+function printPublishedPosts2($all_published_posts)
+{
+    if (isset($_SESSION['user']['username'])) {
+    ?>
+        <div class='post_btn'>
+            <a href="create_post.php" class="btn"> Poster un post </a>
+            <hr>
+        </div>
+    <?php
+    }
+
+    // On affiche les post "valide" un par un
+    foreach ($all_published_posts as $post) {
+        $image = "../static/images/" . $post['image'];
+    ?>
+        <div class='post' style="margin-left: 0px;">
+            <img src=<?= $image ?> class='post_image' alt="">
+            <h3 class="category">
+                <?php // On veut afficher le topic du post
+                $topic = getPostTopic($post); // on récupère le topic du post
+                echo $topic['name']; // on affiche le topic
+                ?>
+            </h3>
+            <div class='post_info'>
+                <h3> <?= $post['title'] ?> </h3>
+                <div class='info'>
+                    <span> <?= date("F j, Y ", strtotime($post["created_at"])) ?> </span>
+                    <span class="read_more"> <a href="single_post.php?post-slug=<?php echo $post['slug']; ?>"> Read more... </a></span>
+                </div>
+            </div>
+        </div>
+    <?php
     }
 }
 
 
 // Fonction pour récupérer le topic d'un post
-function getPostTopic($post) { // Fonction définit aussi dans post_function.php mais c'est pour mieux structurer / séparer le code
+function getPostTopic($post)
+{ // Fonction définit aussi dans post_function.php mais c'est pour mieux structurer / séparer le code
     global $conn;
 
     $id = $post['id']; // pour récupérer la valeur de l'id
@@ -87,7 +125,7 @@ function getPostTopic($post) { // Fonction définit aussi dans post_function.php
     if ($result) {
         $topic = mysqli_fetch_assoc($result); // conversion du résultat en tableau associatif
         return $topic; // on retourne le tableau associatif
-    } 
+    }
 }
 
 
@@ -106,7 +144,8 @@ function getPostTopic($post) { // Fonction définit aussi dans post_function.php
 
 
 // Fonction pour récupérer un seul post par son slug
-function getOnePostBySlug($slug) {
+function getOnePostBySlug($slug)
+{
     global $conn;
 
     $sql = "SELECT * FROM posts WHERE slug='$slug' LIMIT 1"; // avec published=1 forcément car on a cliqué dessus
@@ -115,16 +154,17 @@ function getOnePostBySlug($slug) {
     if ($result) {
         $post = mysqli_fetch_assoc($result); // on récupère les lignes 
         return $post;
-    } 
+    }
 }
 
-function getAllTopics() {
+function getAllTopics()
+{
     global $conn;
 
     $sql = "SELECT * FROM topics"; // requête pour récupérer tous les topics
     $result = mysqli_query($conn, $sql);
 
-    if($result) {
+    if ($result) {
         $topics = mysqli_fetch_all($result, MYSQLI_ASSOC);
         return $topics;
     }
@@ -145,7 +185,8 @@ function getAllTopics() {
 // * * * WAITING POST
 
 
-function getNbWaitingPost() {
+function getNbWaitingPost()
+{
     global $conn;
 
     $user_id = $_SESSION['user']['id']; // récupérer l'id de l'utilisateur connecté
@@ -161,7 +202,8 @@ function getNbWaitingPost() {
 }
 
 
-function getWaitingPost() {
+function getWaitingPost()
+{
     global $conn;
 
     $user_id = $_SESSION['user']['id']; // récupérer l'id de l'utilisateur connecté
@@ -171,14 +213,61 @@ function getWaitingPost() {
     if ($result) { // Si la requête s'est bien déroulée
         $publishedPosts = mysqli_fetch_all($result, MYSQLI_ASSOC);
         return $publishedPosts; // on retourne le tableau associatif
-    } 
+    }
 }
 
 
-function printWaitingPosts($all_puslished_post) {
+function printWaitingPosts($all_puslished_post)
+{
     // On affiche les post "en attente" un par un
     foreach ($all_puslished_post as $post) {
         $image = "../static/images/" . $post['image'];
+    ?>
+
+        <!-- Partie HTML -->
+        <div class='post' style="margin-left: 0px;">
+            <img src=<?= $image ?> class='post_image' alt="">
+            <h3 class="category">
+                <?php // On veut afficher le topic du post
+                $topic = getPostTopic($post); // on récupère le topic du post
+                echo $topic['name']; // on affiche le topic
+                ?>
+            </h3>
+            <div class='post_info'>
+                <h3> <?= $post['title'] ?> </h3>
+                <div class='info'>
+                    <span> <?= date("F j, Y ", strtotime($post["created_at"])) ?> </span>
+                    <span class="read_more"> <a href="single_post.php?post-slug=<?php echo $post['slug']; ?>"> Read more... </a></span>
+                </div>
+            </div>
+        </div>
+        <!-- Fin partie HTML -->
+
+
+        <?php
+    }
+}
+
+
+function getRecentPost()
+{
+    global $conn;
+
+    $sql = "SELECT * FROM posts WHERE published=1 ORDER BY created_at DESC LIMIT 6"; // query to get the last 6 posts
+    $result = mysqli_query($conn, $sql);
+
+    if ($result) {
+        $posts = mysqli_fetch_all($result, MYSQLI_ASSOC);
+        return $posts;
+    }
+}
+
+function printPosts($all_posts)
+{
+    if (isset($_SESSION['user']['username'])) {
+        // On affiche les post "valide" un par un
+        foreach ($all_posts as $post) {
+            $image = "../static/images/" . $post['image'];
         ?>
 
             <!-- Partie HTML -->
@@ -186,8 +275,8 @@ function printWaitingPosts($all_puslished_post) {
                 <img src=<?= $image ?> class='post_image' alt="">
                 <h3 class="category">
                     <?php // On veut afficher le topic du post
-                        $topic = getPostTopic($post); // on récupère le topic du post
-                        echo $topic['name']; // on affiche le topic
+                    $topic = getPostTopic($post); // on récupère le topic du post
+                    echo $topic['name']; // on affiche le topic
                     ?>
                 </h3>
                 <div class='post_info'>
@@ -200,56 +289,12 @@ function printWaitingPosts($all_puslished_post) {
             </div>
             <!-- Fin partie HTML -->
 
-
         <?php
-    }
-}
-
-
-function getRecentPost() {
-    global $conn;
-
-    $sql = "SELECT * FROM posts WHERE published=1 ORDER BY created_at DESC LIMIT 6"; // query to get the last 6 posts
-    $result = mysqli_query($conn, $sql);
-
-    if ($result) {
-        $posts = mysqli_fetch_all($result, MYSQLI_ASSOC);
-        return $posts;
-    }
-}
-
-function printPosts($all_posts) {
-    if (isset($_SESSION['user']['username'])) {
-        // On affiche les post "valide" un par un
-        foreach ($all_posts as $post) {
-            $image = "../static/images/" . $post['image'];
-            ?>
-
-                <!-- Partie HTML -->
-                <div class='post' style="margin-left: 0px;">
-                    <img src=<?= $image ?> class='post_image' alt="">
-                    <h3 class="category">
-                        <?php // On veut afficher le topic du post
-                            $topic = getPostTopic($post); // on récupère le topic du post
-                            echo $topic['name']; // on affiche le topic
-                        ?>
-                    </h3>
-                    <div class='post_info'>
-                        <h3> <?= $post['title'] ?> </h3>
-                        <div class='info'>
-                            <span> <?= date("F j, Y ", strtotime($post["created_at"])) ?> </span>
-                            <span class="read_more"> <a href="single_post.php?post-slug=<?php echo $post['slug']; ?>"> Read more... </a></span>
-                        </div>
-                    </div>
-                </div>
-                <!-- Fin partie HTML -->
-
-            <?php
         }
     } else {
         ?>
-            <h3 style="text-align: center; color: red"> Il faut vous connecter pour voir les posts ! </h3>
-        <?php
+        <h3 style="text-align: center; color: red"> Il faut vous connecter pour voir les posts ! </h3>
+<?php
     }
 }
 
@@ -267,19 +312,21 @@ function printPosts($all_posts) {
 // ===============================================================================================
 // * * * FILTERED POSTS
 
-function getTopic($topic) {
+function getTopic($topic)
+{
     global $conn;
 
-    $sql = "SELECT id FROM topics WHERE name='$topic'"; 
+    $sql = "SELECT id FROM topics WHERE name='$topic'";
     $result_id_topic = mysqli_query($conn, $sql);
 
     if ($result_id_topic) {
         $topic = mysqli_fetch_assoc($result_id_topic); // on récupère une lignes 
         return $topic;
-    } 
+    }
 }
 
-function getPublishedPostsByTopic($topic_id) {
+function getPublishedPostsByTopic($topic_id)
+{
     global $conn;
     $final_posts = array();
 
@@ -292,11 +339,6 @@ function getPublishedPostsByTopic($topic_id) {
         $post['topic'] = getPostTopic($post);
         array_push($final_posts, $post);
     }
-    
+
     return $final_posts;
 }
-
-
-
-
-

@@ -18,33 +18,40 @@
 			</div>
 		<?php endif ?>
 	</div>
+
+	<br>
+	<!-- Messages -->
+	<?php include(ROOT_PATH . '/includes/public/messages.php'); ?>
+	<!-- // Messages -->
+	<br>
+
 	<div class="container dashboard">
 		<h1>Bienvenue dans le dashboard</h1>
 		<div class="stats">
 			<a href="users.php" class="first">
 				<span>
 					<?php
-						$nb_member = getNewUsers();
-						echo $nb_member;
+					$nb_member = getNewUsers();
+					echo $nb_member;
 					?>
 				</span> <br>
 				<span>Newly registered users</span>
 			</a>
 			<a href="posts.php">
 				<span>
-					<?php 
-						include(ROOT_PATH . '/admin/post_functions.php');
-						$nb_post = getNbPublishedPost_admin();
-						echo $nb_post;
+					<?php
+					include(ROOT_PATH . '/admin/post_functions.php');
+					$nb_post = getNbPublishedPost_admin();
+					echo $nb_post;
 					?>
-				Published posts</span>
+					Published posts</span>
 				<br>
 				<span>
-					<?php 
-						$nb_waiting_post = getNbWaitingPost_admin();
-						echo $nb_waiting_post;
+					<?php
+					$nb_waiting_post = getNbWaitingPost_admin();
+					echo $nb_waiting_post;
 					?>
-				Waiting posts</span>
+					Waiting posts</span>
 			</a>
 			<a>
 				<span>z</span> <br>
@@ -58,7 +65,7 @@
 			<a href="users.php">Add Users</a>
 			<a href="posts.php">Add Posts</a>
 		</div>
-		
+
 	</div>
 </body>
 

@@ -28,12 +28,12 @@
 			<hr>
 
 
-			<?php 
-				// On appel les fonctions qui sont dans all_function.php
-				$publishedPosts = getPublishedPosts();
-				if($publishedPosts != null) { 
-					printPublishedPosts($publishedPosts); // On affiche les posts "validé"
-				}
+			<?php
+			// On appel les fonctions qui sont dans all_function.php
+			$publishedPosts = getPublishedPosts();
+			if ($publishedPosts != null) {
+				printPublishedPosts2($publishedPosts); // On affiche les posts "validé"
+			}
 			?>
 		</div>
 		<!-- // content -->
