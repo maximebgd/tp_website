@@ -8,7 +8,9 @@ Voici le répertoire GitHub des 2 TP que nous avons dû réaliser.
 - Avec ce que nous avons appris dans cette matière, je me suis lancé dans un projet personnel de créer mon propre portfolio de A à Z (hormis le CSS que j'ai récupéré sur internet). Je me permets donc, en plus du TP n°1 & n°2, de le déposer.
 ```
 
-$${\color{red}Avec ce que nous avons appris dans cette matière, je me suis lancé dans un projet personnel de créer mon propre portfolio de A à Z (hormis le CSS que j'ai récupéré sur internet). Je me permets donc, en plus du TP n°1 & n°2, de le déposer.}$$
+$${\color{red}Avec ce que nous avons appris dans cette matière, je me suis lancé dans un projet personnel}$$ 
+$${\color{red}de créer mon propre portfolio de A à Z (hormis le CSS que j'ai récupéré sur internet).}$$
+$${\color{red} Je me permets donc, en plus du TP n°1 & n°2, de le déposer.}$$
 
 
 ## TP n°1 - Le site Web
