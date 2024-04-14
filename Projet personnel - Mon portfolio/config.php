@@ -4,7 +4,9 @@ session_start();
 
 
 // Initialisation de $_SESSION :
-if (!isset($_SESSION['l'])) $_SESSION['l'] = 'fr';
+if (!isset($_SESSION['l'])) {
+    $_SESSION['l'] = 'fr';
+}
 if (!isset($_SESSION['home'])) {
     $_SESSION['home'] = array();
     $_SESSION['home']['post'] = 1;
@@ -23,15 +25,13 @@ if (!isset($_SESSION['single_work'])) {
     $_SESSION['single_work']['name'] = '';
 }
 // On modifie les valeurs de $_SESSION :
-function myWitchPageIsIt()
-{
+function myWitchPageIsIt() {
     $page = $_SERVER['PHP_SELF'];
     $page = explode('/', $page);
     $page = end($page);
     return $page; // index.php
 }
-function stringToInt($str)
-{
+function stringToInt($str) {
     return intval($str);
 }
 

@@ -10,13 +10,13 @@ function printNavbarColor() {
         case 'index.php':
             if ($language == 'fr') {
                 ?>
-                    <a class="selected-language" href="index.php?l=fr">🇫🇷</a>
-                    <a style="margin-left: 5px;" href="index.php?l=en">🇺🇸</a>
+                    <a class="selected-language" href="index.php?l=fr" onclick="enregistrerPositionDeDefilement()">🇫🇷</a>
+                    <a style="margin-left: 5px;" href="index.php?l=en" onclick="enregistrerPositionDeDefilement()">🇺🇸</a>
                 <?php
             } else if ($language == "en") {
                 ?>
-                    <a href="index.php?l=fr">🇫🇷</a>
-                    <a class="selected-language" style="margin-left: 5px;" href="index.php?l=en">🇺🇸</a>
+                    <a href="index.php?l=fr" onclick="enregistrerPositionDeDefilement()">🇫🇷</a>
+                    <a class="selected-language" style="margin-left: 5px;" href="index.php?l=en" onclick="enregistrerPositionDeDefilement()">🇺🇸</a>
                 <?php
             }           
             ?>
@@ -29,13 +29,13 @@ function printNavbarColor() {
         case 'works.php':
             if ($language == 'fr') {
                 ?>
-                    <a class="selected-language" href="works.php?l=fr">🇫🇷</a>
-                    <a style="margin-left: 5px;" href="works.php?l=en">🇺🇸</a>
+                    <a class="selected-language" href="works.php?l=fr" onclick="enregistrerPositionDeDefilement()">🇫🇷</a>
+                    <a style="margin-left: 5px;" href="works.php?l=en" onclick="enregistrerPositionDeDefilement()">🇺🇸</a>
                 <?php
             } else if ($language == "en") {
                 ?>
-                    <a href="works.php?l=fr">🇫🇷</a>
-                    <a class="selected-language" style="margin-left: 5px;" href="works.php?l=en">🇺🇸</a>
+                    <a href="works.php?l=fr" onclick="enregistrerPositionDeDefilement()">🇫🇷</a>
+                    <a class="selected-language" style="margin-left: 5px;" href="works.php?l=en" onclick="enregistrerPositionDeDefilement()">🇺🇸</a>
                 <?php
             }    
             ?>
@@ -48,13 +48,13 @@ function printNavbarColor() {
         case 'single_work.php':
             if ($language == 'fr') {
                 ?>
-                    <a class="selected-language" href="works.php?l=fr">🇫🇷</a>
-                    <a style="margin-left: 5px;" href="works.php?l=en">🇺🇸</a>
+                    <a class="selected-language" href="?l=fr" onclick="enregistrerPositionDeDefilement()">🇫🇷</a>
+                    <a style="margin-left: 5px;" href="?l=en" onclick="enregistrerPositionDeDefilement()">🇺🇸</a>
                 <?php
             } else if ($language == "en") {
                 ?>
-                    <a href="works.php?l=fr">🇫🇷</a>
-                    <a class="selected-language" style="margin-left: 5px;" href="works.php?l=en">🇺🇸</a>
+                    <a href="?l=fr" onclick="enregistrerPositionDeDefilement()">🇫🇷</a>
+                    <a class="selected-language" style="margin-left: 5px;" href="?l=en" onclick="enregistrerPositionDeDefilement()">🇺🇸</a>
                 <?php
             }    
             ?>
@@ -67,13 +67,13 @@ function printNavbarColor() {
         case 'blog.php':
             if ($language == 'fr') {
                 ?>
-                    <a class="selected-language" href="blog.php?l=fr">🇫🇷</a>
-                    <a style="margin-left: 5px;" href="blog.php?l=en">🇺🇸</a>
+                    <a class="selected-language" href="blog.php?l=fr" onclick="enregistrerPositionDeDefilement()">🇫🇷</a>
+                    <a style="margin-left: 5px;" href="blog.php?l=en" onclick="enregistrerPositionDeDefilement()">🇺🇸</a>
                 <?php
             } else if ($language == "en") {
                 ?>
-                    <a href="blog.php?l=fr">🇫🇷</a>
-                    <a class="selected-language" style="margin-left: 5px;" href="blog.php?l=en">🇺🇸</a>
+                    <a href="blog.php?l=fr" onclick="enregistrerPositionDeDefilement()">🇫🇷</a>
+                    <a class="selected-language" style="margin-left: 5px;" href="blog.php?l=en" onclick="enregistrerPositionDeDefilement()">🇺🇸</a>
                 <?php
             }    
             ?>
@@ -86,13 +86,13 @@ function printNavbarColor() {
         case 'about.php':
             if ($language == 'fr') {
                 ?>
-                    <a class="selected-language" href="about.php?l=fr">🇫🇷</a>
-                    <a style="margin-left: 5px;" href="about.php?l=en">🇺🇸</a>
+                    <a class="selected-language" href="about.php?l=fr" onclick="enregistrerPositionDeDefilement()">🇫🇷</a>
+                    <a style="margin-left: 5px;" href="about.php?l=en" onclick="enregistrerPositionDeDefilement()">🇺🇸</a>
                 <?php
             } else if ($language == "en") {
                 ?>
-                    <a href="about.php?l=fr">🇫🇷</a>
-                    <a class="selected-language" style="margin-left: 5px;" href="about.php?l=en">🇺🇸</a>
+                    <a href="about.php?l=fr" onclick="enregistrerPositionDeDefilement()">🇫🇷</a>
+                    <a class="selected-language" style="margin-left: 5px;" href="about.php?l=en" onclick="enregistrerPositionDeDefilement()">🇺🇸</a>
                 <?php
             }    
             ?>
@@ -105,13 +105,13 @@ function printNavbarColor() {
         case 'login.php':
             if ($language == 'fr') {
                 ?>
-                    <a class="selected-language" href="login.php?l=fr">🇫🇷</a>
-                    <a style="margin-left: 5px;" href="login.php?l=en">🇺🇸</a>
+                    <a class="selected-language" href="login.php?l=fr" onclick="enregistrerPositionDeDefilement()">🇫🇷</a>
+                    <a style="margin-left: 5px;" href="login.php?l=en" onclick="enregistrerPositionDeDefilement()">🇺🇸</a>
                 <?php
             } else if ($language == "en") {
                 ?>
-                    <a href="login.php?l=fr">🇫🇷</a>
-                    <a class="selected-language" style="margin-left: 5px;" href="login.php?l=en">🇺🇸</a>
+                    <a href="login.php?l=fr" onclick="enregistrerPositionDeDefilement()">🇫🇷</a>
+                    <a class="selected-language" style="margin-left: 5px;" href="login.php?l=en" onclick="enregistrerPositionDeDefilement()">🇺🇸</a>
                 <?php
             }    
             ?>
@@ -124,13 +124,13 @@ function printNavbarColor() {
         default:
             if ($language == 'fr') {
                 ?>
-                    <a class="selected-language" href="index.php?l=fr">🇫🇷</a>
-                    <a style="margin-left: 5px;" href="index.php?l=en">🇺🇸</a>
+                    <a class="selected-language" href="index.php?l=fr" onclick="enregistrerPositionDeDefilement()">🇫🇷</a>
+                    <a style="margin-left: 5px;" href="index.php?l=en" onclick="enregistrerPositionDeDefilement()">🇺🇸</a>
                 <?php
             } else if ($language == "en") {
                 ?>
-                    <a href="index.php?l=fr">🇫🇷</a>
-                    <a class="selected-language" style="margin-left: 5px;" href="index.php?l=en">🇺🇸</a>
+                    <a href="index.php?l=fr" onclick="enregistrerPositionDeDefilement()">🇫🇷</a>
+                    <a class="selected-language" style="margin-left: 5px;" href="index.php?l=en" onclick="enregistrerPositionDeDefilement()">🇺🇸</a>
                 <?php
             }           
                 ?>
@@ -142,15 +142,6 @@ function printNavbarColor() {
             break;
     }
 }
-
-
-// On va faire en sorte que : si on clique sur le drapeau, on envoi "fr" ou "en" à toutes les pages
-
-
-// Une fois qu'on est sur la page, on fait :
-// 1 - on regarde avec $_POST pour savoir si on a reçu une langue
-// 2 - sinon, on met en fr
-
 
 
 // ==================================
@@ -251,9 +242,9 @@ function printnbPageforRecentPosts($nbPage) {
     ?> - <?php
     for ($i = 1; $i <= $nbPage; $i++) {
         if (isset($_SESSION['home']['post']) && $_SESSION['home']['post'] == $i) {
-            ?> <a class="pagination-button" style="color: #303f9f" href="index.php?post=<?= $i ?>"><?= $i; ?></a> - <?php
+            ?> <a class="pagination-button" style="color: #303f9f" href="index.php?post=<?= $i ?>" onclick="enregistrerPositionDeDefilement()"><?= $i; ?></a> - <?php
         } else {
-            ?> <a class="pagination-button" href="index.php?post=<?= $i ?>"><?= $i; ?></a> - <?php
+            ?> <a class="pagination-button" href="index.php?post=<?= $i ?>" onclick="enregistrerPositionDeDefilement()"><?= $i; ?></a> - <?php
         }
     }
 }
@@ -353,11 +344,11 @@ function printnbPageforFeaturedWorks($nbPage) {
     for ($i = 1; $i <= $nbPage; $i++) {
         if (isset($_SESSION['home']['work']) && $_SESSION['home']['work'] == $i) {
 ?>
-               <a style="color: #303f9f" href="index.php?work=<?= $i ?>"><?= $i; ?></a> -
+               <a class="pagination-button" style="color: #303f9f" href="index.php?work=<?= $i ?>" onclick="enregistrerPositionDeDefilement()"><?= $i; ?></a> -
             <?php
         } else {
 ?>
-               <a href="index.php?work=<?= $i ?>"><?= $i; ?></a> -
+               <a class="pagination-button" href="index.php?work=<?= $i ?>" onclick="enregistrerPositionDeDefilement()"><?= $i; ?></a> -
             <?php
         }
     }
@@ -423,24 +414,33 @@ function getTopicforWorks($work) {
 // Fonction pour les afficher proprement
 function printWorks($all_works) {
     foreach ($all_works as $work) {
-?>
-       <a href="single_work.php?name=<?= $work['title'] ?>">
-            <div class="item">
-                <?php
-        $image = './static/images/' . $work['image'];
-?>
-               <img src="<?= $image ?>">
-                <div class="details">
-                    <h3><?= $work['title']; ?></h3>
-                    <div class="item-info">
-                        <div class="year-badge"><?= date('Y', strtotime($work['created_at'])); ?></div>
-                        <h4><?= getTopicforWorks($work); ?></h4>
+        ?>
+            <a href="single_work.php?name=<?= $work['title'] ?>">
+                <div class="item">
+                    <?php $image = './static/images/' . $work['image']; ?>
+                    <img src="<?= $image ?>">
+                    <div class="details">
+                        <h3><?= $work['title']; ?></h3>
+                        <div class="item-info">
+                            <div class="year-badge"><?= date('Y', strtotime($work['created_at'])); ?></div>
+                            <h4><?= getTopicforWorks($work); ?></h4>
+                        </div>
+                        <p><?= $work['content']; ?></p>
                     </div>
-                    <p><?= $work['content']; ?></p>
                 </div>
-            </div>
-        </a>
-    <?php
+            </a>
+            <?php
+                if (isset($_SESSION['user'])) {
+                ?>
+                    <div class="buttons">
+                        <a href="?delete_work=<?= $work['id'] ?>" onclick="return confirmDelete('Êtes-vous sûr de vouloir supprimer ce projet ?');">
+                            <i id="delete_work" class='bx bx-trash-alt'></i>
+                        </a>
+                    </div>
+                <?php
+                }
+            ?>
+        <?php
     }
 }
 
@@ -452,11 +452,11 @@ function printnbPageforWork($nbPage) {
     for ($i = 1; $i <= $nbPage; $i++) {
         if (isset($_SESSION['work']['work']) && $_SESSION['work']['work'] == $i) {
 ?>
-           <a style="color: #303f9f" href="works.php?work="><?= $i; ?></a> -
+           <a class="pagination-button" style="color: #303f9f" href="works.php?work="><?= $i; ?></a> -
         <?php
         } else {
 ?>
-           <a href="works.php?work=<?= $i ?>"><?= $i; ?></a> -
+           <a class="pagination-button" href="works.php?work=<?= $i ?>"><?= $i; ?></a> -
         <?php
         }
     }
@@ -521,44 +521,42 @@ function getTopicforPosts($post) {
 // Fonction pour les afficher proprement
 function printPosts($all_post) {
     foreach ($all_post as $post) {
-?>
-       <div class="post-item">
-            <h3><?php
-        echo $post['title'];
-?></h3>
-            <div class="info">
-                <h5><?= $post['user_name'] ?></h5>
-                <h5>|</h5>
-                <h5><?php
-        echo date('F j, Y', strtotime($post['created_at']));
-?></h5>
-                <h5>|</h5>
-                <h5><?= getTopicforPosts($post); ?></h5>
-            </div>
+        ?>
+            <div class="post-item">
+                <h3><?php echo $post['title']; ?></h3>
+                <div class="info">
+                    <h5><?= $post['user_name'] ?></h5>
+                    <h5>|</h5>
+                    <h5><?php echo date('F j, Y', strtotime($post['created_at'])); ?></h5>
+                    <h5>|</h5>
+                    <h5><?= getTopicforPosts($post); ?></h5>
+                </div>
 
-            <p><?= $post['content']; ?></p>
+                <p><?= $post['content']; ?></p>
 
             <?php
         if (isset($_SESSION['user'])) {
-?>
+            ?>
                <div class="buttons">
-                    <i class='bx bx-share'></i>
+                    <!-- <i class='bx bx-share'></i>
                     <i class='bx bx-link-alt'></i>
-                    <i class='bx bx-copy'></i>
-                    <i class='bx bx-bookmark-plus'></i>
-                    <button>Read More</button>
+                    <i class='bx bx-copy'></i> -->
+                    <a href="?delete_post=<?= $post['id'] ?>" onclick="return confirmDelete('Êtes-vous sûr de vouloir supprimer ce projet ?');">
+                        <i id="delete_post" class='bx bx-trash-alt'></i> 
+                    </a>
+                    <button>Voir le projet</button>
                 </div>
             <?php
         } else {
-?>
+            ?>
                <div class="buttons">
-                    <button>Read More</button>
+                    <button>Voir le projet</button>
                 </div>
             <?php
         }
-?>
-       </div>
-    <?php
+        ?>
+            </div>
+        <?php
     }
 }
 
@@ -569,11 +567,11 @@ function printnbPageforPost($nbPage) {
     for ($i = 1; $i <= $nbPage; $i++) {
         if (isset($_SESSION['blog']['post']) && $_SESSION['blog']['post'] == $i) {
 ?>
-           <a style="color: #303f9f" href="blog.php?post<?= $i ?>"><?= $i; ?></a> -
+           <a class="pagination-button" style="color: #303f9f" href="blog.php?post<?= $i ?>"><?= $i; ?></a> -
         <?php
         } else {
 ?>
-           <a href="blog.php?post=<?= $i ?>"><?= $i; ?></a> -
+           <a class="pagination-button" href="blog.php?post=<?= $i ?>"><?= $i; ?></a> -
             <?php
         }
     }
@@ -683,15 +681,15 @@ function printSingleWork($work) {
 
             <a href="https://github.com/maximebgd">
                 <div class="socials">
-                    <p> Lien gihub du projet : </p>
+                    <p style="text-decoration: underline;"> Lien gihub du projet : </p>
                     <a href="<?= getLinkGithub($work); ?>" class='bx bxl-github' style="font-size: 250%;"></a>
                 </div>
             </a>
 
             <div class="socials">
                 <p> Copier le git clone : </p>
-                <p id="gitclone-text" style="display: none;">git clone <?= getLinkGithub($work); ?></p>
-                <span class='bx bxs-copy' onclick="copyToClipboard()" style="cursor: pointer"></span>
+                <span id="gitclone-text" style="display: none;">git clone <?= getLinkGithub($work); ?></span>
+                <span id="copy_button" class='bx bxs-copy' onclick="copyToClipboard()" style="cursor: pointer; font-size: 120%;"></span>
             </div>
         </div>
 

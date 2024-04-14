@@ -28,12 +28,7 @@
 			<h2 class="content-title">TP réalisé par : </h2>
 			<hr>
             <p class="team-member"> 
-            <img src="./static/images/maxime.png" alt="">
                 <strong>Maxime BEGOUD - TP4</strong> : Développement du code & architecture
-            </p>
-            <p class="team-member"> 
-                <img src="./static/images/amine.png" alt="">
-                <strong>Amine BOUFTILA - TP4 </strong> : 
             </p>
 
 		</div>

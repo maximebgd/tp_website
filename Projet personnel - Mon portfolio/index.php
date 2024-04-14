@@ -34,13 +34,26 @@
         <!-- Featured Works -->
         <div class="separator" id="work">
             <div class="header">
-                <h4>Mes projets</h4> 
                 <?php 
-                    if(isset($_SESSION['user'])) {
+                    if(isset($_SESSION['l']) && $_SESSION['l'] == 'fr') {
+                        ?> <h4>Mes projets</h4> <?php
+                    } else if (isset($_SESSION['l']) && $_SESSION['l'] == 'en'){
+                        ?> <h4>My projects</h4> <?php
+                    }
+
+                    if(isset($_SESSION['user']) && isset($_SESSION['l']) && $_SESSION['l'] == 'fr') {
                         ?><a id="new_work" href="new_work.php">Ajouter un projet</a><?php
                     }
+                    else if (isset($_SESSION['user']) && isset($_SESSION['l']) && $_SESSION['l'] == 'en'){
+                        ?><a id="new_work" href="new_work.php">Add a new project</a><?php
+                    }
+
+                    if(isset($_SESSION['l']) && $_SESSION['l'] == 'fr') {
+                        ?> <a href="works.php">Tout voir</a> <?php
+                    } else if (isset($_SESSION['l']) && $_SESSION['l'] == 'en'){
+                        ?> <a href="works.php">View all</a> <?php
+                    }
                 ?>
-                <a href="works.php">Tout voir</a>
             </div>
         </div>
 
@@ -58,8 +71,17 @@
         <!-- Recent Posts -->
         <div class="recent" id="post">
             <div class="header">
-                <h4>Post récent</h4> <a id="new_post" href="new_post.php" href="#recent_posts">Créer un post</a>
-                <a href="blog.php">Tout voir</a>
+                <?php
+                    if(isset($_SESSION['l']) && $_SESSION['l'] == 'fr') {
+                        ?> <h4>Post récent</h4> 
+                        <a id="new_post" href="new_post.php" href="#recent_posts">Créer un post</a> 
+                        <a href="blog.php">Tout voir</a><?php
+                    } else if (isset($_SESSION['l']) && $_SESSION['l'] == 'en'){
+                        ?> <h4>Recent post</h4> 
+                        <a id="new_post" href="new_post.php" href="#recent_posts">Create a new post</a> 
+                        <a href="blog.php">View all</a><?php
+                    }
+                ?>
             </div>
             <div class="posts">
 

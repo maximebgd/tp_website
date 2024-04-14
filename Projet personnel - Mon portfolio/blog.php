@@ -12,7 +12,14 @@
     <!-- // Navbar -->
 
     <!-- Blog -->
-    <h1 class="page-title">Blog <a class="create" href="new_post.php">Créer un post</a> </h1>
+    <h1 class="page-title">Blog 
+        <?php 
+            if(isset($_SESSION['l']) && $_SESSION['l'] == 'fr') {
+                ?><a class="create" href="new_post.php">Créer un post</a> </h1><?php
+            } else if (isset($_SESSION['l']) && $_SESSION['l'] == 'en'){
+                ?><a class="create" href="new_post.php">Create a new post</a> </h1><?php
+            }
+        ?>
     <div class="content">
         <div class="post-list">
 
